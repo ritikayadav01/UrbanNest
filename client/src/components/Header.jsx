@@ -9,8 +9,8 @@ export default function Header() {
         <Link to='/'>
         <div className="flex items-center">
 
-        {/* <MdMapsHomeWork className="text-indigo-900 text-3xl" /> */}
-        <img src="house.png" alt="" className="h-10 w-10 p-1" />
+        <MdMapsHomeWork className="text-indigo-950 text-3xl" />
+        {/* <img src="house.png" alt="" className="h-10 w-10 p-1" /> */}
         <h1 className="font-bold text-xl sm:text-3xl flex flex-wrap ">
           <span className="text-slate-700">  Urban</span>
           <span className="text-indigo-900">Nest</span>
