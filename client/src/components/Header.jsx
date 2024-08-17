@@ -41,6 +41,11 @@ export default function Header() {
               Sign In
             </li>
           </Link>
+          <Link to="/sign-up">
+            <li className=" text-cyan-100 hover:text-xl slow-text cursor-pointer">
+              Sign Up
+            </li>
+          </Link>
         </ul>
       </div>
     </header>
