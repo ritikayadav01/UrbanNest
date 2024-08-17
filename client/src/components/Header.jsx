@@ -26,7 +26,7 @@ export default function Header() {
           <FaSearch className="text-indigo-950" />
         </form>
         <ul className="flex gap-4 font-bold text-lg p-2">
-            <Link to="/about">
+            <Link to="/">
             <li className="hidden sm:inline text-indigo-900 hover:text-xl slow-text cursor-pointer">Home</li>
             </Link>
             <Link to='/about'>
