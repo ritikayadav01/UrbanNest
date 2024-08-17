@@ -2,7 +2,10 @@ import express from "express";
 import mongoose from "mongoose";
 import userRouter from "./routes/user.route.js";
 import authRouter from "./routes/auth.route.js";
+import dotenv from 'dotenv'
+dotenv.config();
 // connecting from mongodb using mongoose (can also warp it in the asyc await we dont know where is our database )
+
 mongoose
   .connect("mongodb://localhost:27017")
   .then(() => {
