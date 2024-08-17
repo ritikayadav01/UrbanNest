@@ -22,7 +22,10 @@ app.listen(3000, () => {
 // response : we send data from the server
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
+
+
 // creating a middleware 
+
 // erro->the error we are getting 
 // req->the request client made 
 // res->the response we will give 
