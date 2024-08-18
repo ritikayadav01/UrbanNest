@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import userRouter from "./routes/user.route.js";
 import authRouter from "./routes/auth.route.js";
 import dotenv from 'dotenv'
+import cookieParser from "cookie-parser";
 dotenv.config();
 // connecting from mongodb using mongoose (can also warp it in the asyc await we dont know where is our database )
  
@@ -16,6 +17,7 @@ mongoose
   });
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
 app.listen(3000, () => {
   console.log("Server is listening ");
 });
