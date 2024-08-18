@@ -16,12 +16,15 @@ import {
   deleteUserFailure,
   deleteUserStart,
   deleteUserSuccess,
+  signOutUserStart,
+  signOutUserFailure,
+  signOutUserSuccess,
 } from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
 export default function Profile() {
   const dispatch = useDispatch();
   const fileRef = useRef(null);
-  const { currentUser,loading,error } = useSelector((state) => state.user);
+  const { currentUser, loading, error } = useSelector((state) => state.user);
   const [file, setfile] = useState(undefined);
   const [fileper, setfileper] = useState(0);
   const [fileUploadError, setfileUploadError] = useState(false);
@@ -29,7 +32,7 @@ export default function Profile() {
   const [formData, setformData] = useState({});
   console.log(file);
 
-  const [updateSuccess, setupdateSuccess] = useState(false)
+  const [updateSuccess, setupdateSuccess] = useState(false);
   // console.log(formData);
   // firebase storage
   // allow read;
@@ -93,29 +96,40 @@ export default function Profile() {
     } catch (error) {
       dispatch(updateUserFailure(error.message));
     }
-
-
   };
-  const handleDeleteUser=async()=>{
-try {
-  dispatch(deleteUserStart());
-  const res = await fetch(`/api/user/delete/${currentUser._id}`, {
-    method: "DELETE",
-  });
-  const data = await res.json();
-  if (data.success === false) {
-    dispatch(deleteUserFailure(data.message));
-    return;
-  }
-  dispatch(deleteUserSuccess(data));
-} catch (error) {
-  dispatch(deleteUserFailure(error.message))
-}
-  }
+  const handleDeleteUser = async () => {
+    try {
+      dispatch(deleteUserStart());
+      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(deleteUserFailure(data.message));
+        return;
+      }
+      dispatch(deleteUserSuccess(data));
+    } catch (error) {
+      dispatch(deleteUserFailure(error.message));
+    }
+  };
 
-   
+  const handleSignOut=async()=>{
+    try {
+      dispatch(signOutUserStart())
+      const res=await fetch('/api/auth/signout');
+      const data=await res.json();
+      if(data.success===false)
+      {
+        dispatch(signOutUserFailure(data.message))
+        return;
+      }
 
-  
+      dispatch(signOutUserSuccess(data))
+    } catch (error) {
+      dispatch(signOutUserFailure(data.message)) 
+    }
+  }
   return (
     <div className="p-3 max-w-lg mx-auto my-3 rounded-lg backdrop-blur-xl bg-white/40 ...">
       <h1 className="text-3xl font-bold text-teal-950 text-center my-3 ">
@@ -174,21 +188,30 @@ try {
           className="border p-3 rounded-lg "
           onChange={handleChange}
         />
-        <button disabled={loading} className="bg-slate-900 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80">
-          {loading?'Loading...':'update'}
+        <button
+          disabled={loading}
+          className="bg-slate-900 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80"
+        >
+          {loading ? "Loading..." : "update"}
         </button>
       </form>
       <div className="flex justify-between mt-5 ">
-        <span onClick={handleDeleteUser} className="text-red-900 font-bold cursor-pointer">
+        <span
+          onClick={handleDeleteUser}
+          className="text-red-900 font-bold cursor-pointer"
+        >
           Delete Account{" "}
         </span>
-        <span className="text-blue-900 font-bold cursor-pointer">
+        <span
+          onClick={handleSignOut}
+          className="text-blue-900 font-bold cursor-pointer"
+        >
           Sign Out{" "}
         </span>
       </div>
-      <p className="text-red-950 font-bold">{error?error:""}</p>
+      <p className="text-red-950 font-bold">{error ? error : ""}</p>
       <p className="text-green-950 font-bold">
-        {updateSuccess?'User is updated successfully!!':""}
+        {updateSuccess ? "User is updated successfully!!" : ""}
       </p>
     </div>
   );
