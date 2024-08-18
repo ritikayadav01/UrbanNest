@@ -1,4 +1,4 @@
-// import { errorHandler } from "./error";
+import { errorHandler } from "./error.js";
 // import { errorHandler } from "../utils/error"
 
 
