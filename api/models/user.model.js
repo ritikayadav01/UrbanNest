@@ -16,7 +16,7 @@ const userSchema =new mongoose.Schema({
     },
     avatar:{
         type:String,
-        default:"https://e7.pngegg.com/pngimages/798/436/png-clipart-computer-icons-user-profile-avatar-profile-heroes-black.png"
+        default:"https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png"
     }
 },{timestamps:true});
 const User=mongoose.model('User',userSchema);
