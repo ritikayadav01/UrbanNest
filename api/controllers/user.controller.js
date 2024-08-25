@@ -51,7 +51,6 @@ export const getUserListings=async(req,res,next)=>{
             
         } catch (error) {
             next(error)
-            
         }
 
     }else{
