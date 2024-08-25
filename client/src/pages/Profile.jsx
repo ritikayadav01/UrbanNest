@@ -250,7 +250,7 @@ export default function Profile() {
       {userListings &&
         userListings.length > 0 &&
         <div className="flex flex-col gap-4">
-          <h1 className="text-center mt-7 text-2xl font-semibold">Your Listing</h1>
+          <h1 className="text-center mt-7 text-2xl text-green-950 font-bold uppercase">Your Listings</h1>
         {userListings.map((listing) => (
           <div key={listing._id} className=" border-2 rounded-lg flex justify-between p-3 gap-5 items-center">
             <Link to={`/listing/${listing._id}`}>
@@ -260,12 +260,12 @@ export default function Profile() {
                 className="h-16 w-18 object-contain rounded-lg "
               />
             </Link>
-            <Link to={`/listing/${listing._id}`} className="text-slate-700 font-semibold flex-1 hover:underline truncate">
+            <Link to={`/listing/${listing._id}`} className="text-slate-800 font-bold flex-1 hover:underline truncate">
               <p className="">{listing.name}</p>
             </Link>
             <div className="flex flex-col items-center">
-              <button className="text-red-950 uppercase">Delete</button>
-              <button className="text-blue-950 uppercase">Edit</button>
+              <button className="text-red-900 font-bold uppercase">Delete</button>
+              <button className="text-blue-950 font-bold uppercase">Edit</button>
             </div>
           </div>
         ))}
