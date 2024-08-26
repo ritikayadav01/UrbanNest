@@ -85,15 +85,15 @@ export const updateListing = async (req, res, next) => {
       }
   
       let type = req.query.type;
-  
+  // serach for both rent and sale 
       if (type === undefined || type === 'all') {
         type = { $in: ['sale', 'rent'] };
       }
   
       const searchTerm = req.query.searchTerm || '';
-  
+  //  sort by the latest 
       const sort = req.query.sort || 'createdAt';
-  
+  // default it is in desending order 
       const order = req.query.order || 'desc';
   
       const listings = await Listing.find({
