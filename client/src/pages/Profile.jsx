@@ -167,7 +167,8 @@ export default function Profile() {
     }
   };
   return (
-    <div className="p-3 max-w-lg mx-auto my-3 rounded-lg backdrop-blur-xl bg-white/40 ...">
+    <div className="flex flex-row">
+    <div className="flex-1 p-3 max-w-lg mx-auto my-3 rounded-lg backdrop-blur-xl bg-white/40 ...">
       <h1 className="text-3xl font-bold text-teal-950 text-center my-3 ">
         PROFILE
       </h1>
@@ -255,7 +256,15 @@ export default function Profile() {
       <p className="text-green-950 font-bold">
         {updateSuccess ? "User is updated successfully!!" : ""}
       </p>
-      <div className="flex justify-center py-4">
+
+
+
+
+
+      
+
+      
+      <div className="flex-1 justify-center py-4">
         <button
           onClick={handleShowListings}
           className="text-green-50 font-semibold hover:opacity-95 bg-teal-950 w-full  text-center uppercase p-3  rounded-lg"
@@ -307,6 +316,7 @@ export default function Profile() {
           ))}
         </div>
       )}
+    </div>
     </div>
   );
 }
